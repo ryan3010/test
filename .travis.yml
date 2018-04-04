@@ -1,0 +1,13 @@
+sudo: required
+services:
+- docker
+language: go
+deploy:
+  provider: gae
+  project: compute-engine-ryan
+  keyfile: gce.json
+  verbosity: debug
+  on: master
+before_install:
+- openssl aes-256-cbc -K $encrypted_001ae0a94e76_key -iv $encrypted_001ae0a94e76_iv
+  -in gce.json.enc -out gce.json -d
